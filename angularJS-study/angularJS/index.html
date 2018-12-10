@@ -1,52 +1,39 @@
 ﻿<!DOCTYPE html>
-<html ng-app><!--增加了“myapp”为什么不生效？-->
+<html ng-app="myApp"><!--增加了“myapp”为什么不生效？-->
 	<head>
 		<title></title>
 		<meta charset="UTF-8"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+		<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
 		
 		
 		
   </head>
   <body>
-    <div ng-controller="MyController1">
-      <h1>clock one:{{clock1}}!</h1>
-      <hr />
+   
       
-    </div>
-    <div ng-controller="MyController2">
+       <div ng-controller="ChildController">
+       	<button ng-click="sayhello()">SayHello</button>
+       	
+       	<p>{{person}}</p>
+       	
      
-    <h1>clock tow:{{clock2.now}}</h1>
     </div>
+    
+      
+   
+   
      <script type="text/javascript">
-      function MyController1($scope) {
-        $scope.clock1 = new Date();
-        var updateClock1 = function() {
-          $scope.clock1 = new Date();
-        };
-        setInterval(function() {
-          $scope.$apply(updateClock1);
-        }, 1000);
-        updateClock1();
-      };
-      
+     	angular.module('myApp',[])
+     	.controller('ChildController',function($scope){
+     		$scope.sayhello=function(){
+     			$scope.person={name:'lilian.liu',age:'30'};
+     			
+     		};
+     	});
+     	
       
     </script>
-    <script type="text/javascript">
-    	
-      function MyController2($scope) {
-        $scope.clock2 ={
-        	now:new Date()
-        };
-        var updateClock2 = function() {
-          $scope.clock2.now= new Date();
-        };
-        setInterval(function() {
-          $scope.$apply(updateClock2);
-        }, 1000);
-        updateClock2();
-      };
-    </script>
+ 
   </body>
  
 </html>
