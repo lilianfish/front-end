@@ -11,29 +11,56 @@
   <body>
    
       
-       <div ng-controller="ChildController">
-       	<button ng-click="sayhello()">SayHello</button>
-       	
-       	<p>{{person}}</p>
-       	
-     
+      <div ng-controller="ChildController">
+	<button ng-click="sayhello()">SayHello</button>
+	<p>{{person}}</p>
+      </div>
+    <div ng-controller="yanzheng">
+    	<input type="text" id="" value="" ng-model="email" />
+    	<h1>你输入了{{email}}</h1>
     </div>
     
+<!--遍历数组循环输出，比较简单的例子，还有嵌套输出-->
+    <div id="" ng-controller="tabletest">
+    	<table border="" cellspacing="" cellpadding="" >
+    		<tr><th>name</th>
+    			<th>price</th>
+    		</tr>
+    		<tr ng-repeat="x in prices"><td>{{x.name}}</td>
+    			<td >{{x.tag}}</td>
+    		</tr>
+    	</table>
+    	{{price}}
+    	
+    		<li ng-repeat="x in brand">{{x}}</li>
+    	</ul>
+    </div>
       
    
-   
-     <script type="text/javascript">
-     	angular.module('myApp',[])
-     	.controller('ChildController',function($scope){
-     		$scope.sayhello=function(){
-     			$scope.person={name:'lilian.liu',age:'30'};
-     			
-     		};
-     	});
-     	
-      
-    </script>
- 
+<script type="text/javascript">
+	var app = angular.module('myApp', [])
+	app.controller('ChildController', function($scope) {
+		$scope.sayhello = function() {
+			$scope.person = {
+				name: 'lilian.liu',
+				age: '30'
+			};
+			$scope.person.age = 25;
+
+		};
+	});
+	app.controller('yanzheng',function($scope){
+		
+	})
+//即便没有任何代码，也要有这段控制器。
+app.controller('tabletest',function($scope){
+	$scope.prices=[
+	{name:"ysl",tag:300},
+	{name:"tf",tag:150}
+	];
+	$scope.brand=["tf","chanel","JJ"]
+})
+</script>
   </body>
  
 </html>
