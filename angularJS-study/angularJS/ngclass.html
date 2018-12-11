@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			.red{
+				color: red;
+			}
+		</style>
+	</head>
+	<body ng-app="myApp">
+		<div ng-controller="ngclasstest">
+			
+		
+		<div >
+			<p>{{ab}}</p>
+			<h1>{{a}}</h1>
+			<h1>{{data}}</h1>
+			
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app=angular.module("myApp",[])
+		app.controller("ngclasstest",function($scope,$filter){
+			$scope.a=new Date();
+			$scope.data=new Date("2018-12-21");
+			$scope.ab=(new Date().getTime()-new Date("2018-12-21").getTime())/86400000*24;
+			
+		})
+	</script>
+</html>
